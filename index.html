@@ -28,7 +28,15 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/animate.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
- 
+
+  <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+  <style>
+    #map { 
+    position: relative;
+    height: 700px; }
+   </style>
 </head>
 
 <body>
@@ -88,7 +96,22 @@
     <!---->
     <section id="feature" class="section-padding wow fadeIn delay-05s">
       <div class="container">
-        <div class="row">
+        <div id="map"></div>
+        <script>
+        
+          var map = L.map('map').
+          setView([-2.188000, -79.878171], 18);
+          
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+              maxZoom: 30
+          }).addTo(map);
+    
+          L.control.scale().addTo(map);
+          L.marker([-2.188282, -79.878180], {draggable: true}).addTo(map);
+  
+        </script>
+        <!-- <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="wrap-item text-center">
               <div class="item-img">
@@ -125,7 +148,7 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
     <!---->
